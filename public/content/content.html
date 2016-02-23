@@ -1,0 +1,146 @@
+传统网页制作:
+@myblog
+技术:
+过程:
+1.设计图
+http://www.golaravel.com/
+2.选择的库
+bootstrap
+记录:
+<p>1.整理参考网站的html和自己对html5结构化的理解搞定了基本的结构</p>
+<p>
+2.添加<meta name="HandheldFriendly" content="True" />，上网查了一下，这个是来 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓。这里有个整理好meta的地方
+http://segmentfault.com/a/1190000002407912
+</p>
+<p>
+3.<meta name="viewport" content="width=device-width, initial-scale=1.0" />在这个网址找到也找到了
+具体如下:
+width：宽度（数值 / device-width）（范围从200 到10,000，默认为980 像素）
+height：高度（数值 / device-height）（范围从223 到10,000）
+initial-scale：初始的缩放比例 （范围从>0 到10）
+minimum-scale：允许用户缩放到的最小比例
+maximum-scale：允许用户缩放到的最大比例
+user-scalable：用户是否可以手动缩 (no,yes)
+minimal-ui：可以在页面加载时最小化上下状态栏。（已弃用）
+注意，很多人使用initial-scale=1到非响应式网站上，这会让网站以100%宽度渲染，用户需要手动移动页面或者缩放。如果和initial-scale=1同时使用user-scalable=no或maximum-scale=1，则用户将不能放大/缩小网页来看到全部的内容。
+</p>
+<p>
+4.<link rel="shortcut icon" href="/assets/favicon.ico">上网查了一下，这个兼容IE6用的。
+</p>
+<p>
+5.<link rel="canonical" href="http://www.golaravel.com/" />我接着上网查了一下，如下:
+2009年2月份，谷歌、雅虎和live search 三家搜索引擎宣布支持Link的一个新属性Canonical，其目的是帮助网站管理员们，解决网站内容存在多个版本时，指定规范链接，帮助解决内容重复收录问题。
+Canonical标签是做什么用的？ 
+
+canonical标签就是告诉搜索引擎哪个页面是权威页面。以我的理解，Canonical标签大致的作用如下。
+　　第一，使用Canonical标签使网址规范化。
+　　第二，避免内容重复页面，搜索引擎收录更准确。
+　　第三，集中传递页面权重。
+
+　　Canonical链接标签只能作用于同一个域名所在的网址，不能作用于不同域名上的重复内容。如果是跨站，可以使用301重定向。
+
+　　网址不规范，会降低页面权重，是因为搜索引擎会认为页面内容有重复。做法是将这些不规范的网址，指向同一个页面。
+
+　　假设网站上有如下网址所在页面内容是相同的：
+http://www.example.com/products
+http://www.example.com/products?sessionid=123456
+http://www.example.com/products?trackingid=feed
+
+
+　　可以在head meta部分加入如下代码：
+<link rel="canonical" href="http://www.example.com/products" />
+
+　　后两个页面的内容会被搜索引擎认为是重复内容，就是告知搜索引擎把相关的搜索信号都传递到第一个网址。
+　　这样任何含有这个标签的网页，不管它最终的URL是什么，搜索引擎最终都会只收录 canonical标签指定的那个页面。
+　　这样做的好处是避免多个URL的存在，分散了页面权重，更加利于排名。
+
+用好canonical标签，下面几点也是需要认识的。 
+
+　　第一，该链接标签可用于定义相对地址，也可用于定义绝对地址。但为了保险起见，建议使用绝对地址。
+　　第二，如果使用了canonical链接标签的页面在整个网站中并无重复内容的页面，也无需担心，该标签暂时会被搜索引擎“束之高阁”。
+　　第三，该链接具有可传递性。假如你在网址A中将网址B指定为首选地址，而在网址B中又将网址C指定为首选地址，那么搜索引擎会认为网址C才是A和B的首选页面。这种情况有时候在网址重定向中会发生。
+　　第四，一个网页链向了有canonical标签的页面，会被当作像301转向到这一页的canonical页。
+　　第五，一个页面可以用rel=canonical指向自己，一个网站的所有页面可以都有rel=canonical。在使用rel=canonical完全不用担心，只用在使用时指对了页面。
+
+当然canonical不是万能的 ，对于大型重复页面出现的商城，例如淘宝，京东这些，要解决完美的url规范都不是那么容易的。
+</p>
+<p>
+	6.<link rel="next" href="http://www.golaravel.com/page/2/" />，参考如下
+	http://blog.csdn.net/Joyhen/article/details/43233663
+</p>
+<p>
+	7.然后开始写css，制作头部，目前头部的需求没有多少，看了一下bootstrap文档和原网站，搞定头部。
+	接着制作nav，发现了原网站中做了响应式的处理，我先简单的做了一些处理，后期再做处理。
+	在制作作者那部分的时候，看到原网站css里有一个属性 white-space:nowrap.突然发现印象有点模糊，于是查了一下，解释如下:
+	"The white-space property specifies how white-space inside an element is handled."
+	属性:white-space: normal|nowrap|pre|pre-line|pre-wrap|initial|inherit;
+	white-space是为了处理元素内的空白如何处理
+	这里nowrap是合并空白，但是阻止文本内的分行
+</p>
+<p>
+	8.收集一些font-family: "Georgia", "Xin Gothic", "Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei", "SimSun", sans-serif;
+	在制作博客内容部分里的链接的时候，发现原网站的css中有word-wrap和text-decoration-color.
+	word-wrap:用于设置一个单词超出box的宽度时是否自动换行，break-word可以在单词内部断开，断开后
+	仍然正常显示
+	text-decoration-color:Change the color of the line, in an underlined text:
+</p>
+<p>
+	9.突然发现这里是通过在title后面添加空的内容，然后高度和下边框一致，添加颜色即可
+</p>
+<p>
+	10.第二天，开发js部分,开始想用botstrap的模态框对"留言"那里处理，不过发现没搞明白，另一个选择
+	方案是:做一个textarea，在这里用到了css的resize:none;属性。可以使textarea大小不能人为改变.
+</p>
+<p>
+	11.开始写"留言"部分的js，使用的jQuery的stop()停止动画，slideDown，slideUp滑动，val()用来设置和
+	获取textarea的值
+</p>
+<p>
+	明天计划:1头部的nav的JavaScript功能，主要是点击某一项显示相应项的内容
+			 2"阅读全文"的开发
+</p>
+<p>
+	添加注册和登录界面
+</p>
+<p>
+	编写User.js
+	1)MongoDB的insert/update/remove都是异步的，也就是说发出insert命令之后，就不管数据库是否执行成功了。要想知道数据库是否执行成功，需要再发出一个查询请求来获取连接（Connection）的最后一个错误状态。为了简化这个过程，也就支持{safe:true}这个参数，使得insert和错误状态查询能够一起执行,一旦设置这个参数，一定要增加回调函数作为第三个参数。具体地，我们可以看下面地例子来理解这个{safe:true}的意义：
+db.collection('bar', function(err, collection){
+        collection.insert({a:996, _id:'1'}, function(error, bars){
+        console.log('insert success without safe');
+        console.log(error);
+        console.log(bars);
+        collection.insert({a:996, _id:'1'}, {safe:true}, function(error, bars){
+            console.log('insert fail with safe and get error');
+            console.log(error);
+            console.log(bars);
+            collection.insert({a:996, _id:'1'}, function(error, bars){
+                console.log('insert fail without safe but no error');
+                console.log(error);
+                console.log(bars);
+            });
+        });
+    });
+});
+
+# output result
+[app.js] insert success without safe
+[app.js] null
+[app.js] [ { a: 996, _id: '1' } ]
+
+[app.js] insert fail with safe and get error
+[app.js] { [MongoError: E11000 duplicate key error index: foo.bar.$_id_  dup key: { : "1" }]
+        name: 'MongoError',
+        err: 'E11000 duplicate key error index: foo.bar.$_id_  dup key: { : "1" }',
+        code: 11000,
+        n: 0,
+        connectionId: 38,
+        ok: 1 }
+[app.js] undefined
+
+[app.js] insert fail without safe but no error
+[app.js] null
+[app.js] [ { a: 996, _id: '1' } ]
+这里的_id是mongodb默认的主键，是不允许重复的。如果你传入了_id则以传入的值作为主键，如果没有传入则会自动生成。你可以看到，第一次insert，我们也不关心是不是真的插入了，幸运的是真的成功了，因为不存在_id为1的数据。第二次插入的时候，我们设置{safe:true}以确保一定插入成功，这是会报主键重复的错误。第三次同样的插入，但是不设置{safe:true}，这个时候发现并没有报错，而且回调函数还拿到了要插入的数据。是不是第三次插入成功了呢？不是的，其实正像第二次插入的一样，肯定是主键重复了，但是由于我们并没有要求返回最后的错误状态，所以mongodb drvier直接回调了我们传入的回调函数，并且设置error为null，bars为要插入的数据。总结一下，如果你要确保数据是否更新（insert/update/remove）成功必须要设置{safe:true}选项。
+更多资料看这个<a href="http://blog.csdn.net/cike110120/article/details/17251843">点击这里</a>
+</p>

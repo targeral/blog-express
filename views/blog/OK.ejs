@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        document.onreadystatechange = function() {
+            if(document.readyState == "complete") {
+                var span = document.getElementById("time");
+                var count = span.firstChild.nodeValue;
+                var time = setInterval(function() {
+                    span.firstChild.nodeValue = --count;
+                    Go(count);
+                }, 1000);
+
+            }
+            function Go(n) {
+                if(n == 0) {
+                    location.href = "dashboard";
+                    clearInterval(time);
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <p>发表成功，<span id="time">3</span>秒后回到后台页面！</p>
+</body>
+</html>

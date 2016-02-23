@@ -1,0 +1,74 @@
+<%-include header %>
+<%-include nav%>
+<% if(!Home_page && blogs[0]) {%>
+<div class="post"><strong><%- blogs[0].label %></strong></div>
+<%}%>
+<% blogs.forEach(function(blog, index) { %>
+<article id="1" class="post">
+	<header class="post-head">
+		<h2 class="post-title"><a href="/read"><%= blog.title %></a></h2>
+		<hgroup class="post-meta">
+			<span class="author">作者:<a href="#" title=""><%= blog.author %></a></span>
+			<time class="post-date" datatime=""><%= blog.time.minute%></time>
+		</hgroup>
+	</header>
+	<div class="post-content">
+		<p><%- blog.summary %></p>
+	</div>
+	<div class="blog-content"><%- blog.content%></div>
+	<a class="btn btn-default blog-btn" data-off=true>阅读全文</a>
+	<footer class="post-footer clearfix">
+		<div class="pull-left tag-list">
+			<i></i>
+			<a href="#"><%- blog.label%></a>
+		</div>
+	</footer>
+</article>
+<% }) %>
+</main>
+<script src="javascripts/blog_js.js"></script>
+
+<aside class="col-md-4 sidebar">
+	<div class="widget">
+		<h4 class="title">文章搜索</h4>
+		<form action="/search" method="POST">
+			<input type="text" name="keyword" class="search">
+			<input type="submit" value="搜索" class="search-btn">
+		</form>
+	</div>
+	<div class="widget">
+		<h4 class="title">我的信息</h4>
+		<p>QQ号:2654955040</p>
+	</div>
+	<div class="widget">
+		<h4 class="title"><a href="#">留言</a></h4>
+		<a href="#" class="btn btn-default btn-block" id="msg">留点什么吧</a>
+		<div class="message">
+			<div class="textarea">
+				<textarea name="" id="" cols="39" rows="4" autofocus></textarea>
+			</div>
+			<button class="yes">确定</button>
+			<button class="cancel">取消</button>
+		</div>
+		<div class="success"></div>
+	</div>
+	<div class="widget">
+		<h4 class="title">标签云</h4>
+		<div class="content tag-cloud">
+			<a href="/op1">html/css</a>
+			<a href="/op2">HTML5</a>
+			<a href="/op2">CSS3</a>
+			<a href="/op3">javascript</a>
+			<a href="/op4">nodejs</a>
+			<a href="/op8">响应式</a>
+			<a href="/op5">design</a>
+			<a href="/op9">canvas</a>
+			<a href="#">...</a>
+		</div>
+	</div>
+</aside>
+</div>
+</div>
+<%-include paging %>
+</section>
+<%-include footer %>

@@ -1,0 +1,20 @@
+@1.event.srcElement 可以捕获当前事件作用的对象
+@2.*.children 获取元素的直接后代的子元素的集合
+@3. list[i].onclick = function(e) {
+	e = e || window.event;//是js在事件处理兼容IE和非IE的写法
+}
+@4.parentNode。父节点
+@5.接着写"赞"的地方，在参数上有两个值，一个是box,一个是el，
+box:是整个li.box用于整理操作。
+el:是触发事件对象。
+函数主体部分:
+1.首先取得"4个人觉得很赞"这部分，然后取自定义属性total，这个用来统计赞的人数，通过parseInt().
+2.取el的内容，来判断是"赞"还是"取消赞"，当赞的时候，newTotal加1，并通过三元运算符判断newTotal是否
+为1，来选择内容更新为"我觉得很赞"(为1) 或者是"我和" + oldTotal+"个人觉得很赞"(不为1),并改变el的
+内容为"取消赞"。
+当取消赞的时候，和上面类似
+3.然后要更新total属性的值，通过setAttribute();
+4.最后通过三元运算符，如果newTotal == 0,就让他display:none否则为block;
+@6onfocus onblur onkeyup
+在这里我开始做textarea区域的onfocus onblur事件处理，通过改变类名改变是开状态还是关状态，通过判断
+文本框的value值赋予相应的值,当失去焦点的时候，如果文本框为空则改变类名，关闭文本框，添加文本

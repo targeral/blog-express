@@ -1,0 +1,53 @@
+	<footer class="main-footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-4">
+					<div class="widget">
+						<h4 class="title">最新文章</h4>
+						<div class="content recent-post">
+                            <%for(var i in blogs) {%>
+                               <div class="recent-single-post">
+                                <a href="#" class="post-title"><%= blogs[i].title%></a>
+                                <div class="date"><%= blogs[i].time.minute%></div>
+                                </div>
+                            <%if(i == 2) break;%>
+                            <%}%>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4">
+                    <div class="widget">
+                        <h4 class="title">标签云</h4>
+                        <div class="content tag-cloud">
+                            <a href="/op1">html/css</a>
+                            <a href="/op2">HTML5</a>
+                            <a href="/op2">CSS3</a>
+                            <a href="/op3">javascript</a>
+                            <a href="/op4">nodejs</a>
+                            <a href="/op8">响应式</a>
+                            <a href="/op5">design</a>
+                            <a href="/op9">canvas</a>
+							<a href="#">...</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="widget">
+                        <h4 class="title">快捷链接</h4>
+                        <div class="content tag-cloud friend-links">
+                            <a href="http://www.bootcss.com" title="Bootstrap中文网"  target="_blank">Bootstrap中文网</a>
+                            <a href="http://www.bootcdn.cn" title="开放CDN服务"  target="_blank">开放CDN服务</a>
+                            <a href="http://www.gruntjs.net" title="Grunt中文网"  target="_blank">Grunt中文网</a>
+                            <hr>
+                            <a href="http://paste.codequs.com/" title="代码粘贴"  target="_blank">icode代码粘贴服务</a>
+                            <a href="http://targeral.com/codequs" title="iCode"  target="_blank">iCode</a>
+                        </div>
+                </div></div>
+			</div>
+		</div>
+	</footer>
+	<script src="javascripts/jquery.js"></script>
+	<script src="javascripts/bootstrap.min.js"></script>
+	<script src="javascripts/blog.js"></script>
+</body>
+</html>

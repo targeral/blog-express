@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <a href="/targeral" target="_blank">进入博客</a>
+    <a href="/haha" target="_blank">我的音乐</a>
+    <a href="/login">后台管理</a>
+    <a href="../">h</a>
+    <div>
+      <% if(user) {%>
+        <span>已登录</span>
+        <a href="/logout">退出</a>
+      <% }else{ %>
+        <span>未登入</span>
+      <% } %>
+    </div>
+  </body>
+</html>
